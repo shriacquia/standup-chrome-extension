@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCRUM Daily Standup</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Daily Standup Updates</h1>
+            <button id="settingsBtn" class="settings-btn" title="Settings">⚙️</button>
+        </header>
+
+        <div id="loadingDiv" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Loading tickets...</p>
+        </div>
+
+        <div id="errorDiv" class="error hidden">
+            <p id="errorMessage"></p>
+            <button id="retryBtn" class="btn btn-secondary">Retry</button>
+        </div>
+
+        <div id="configureDiv" class="configure hidden">
+            <div class="configure-content">
+                <h3>Configuration Required</h3>
+                <p>Please configure your Jira settings first.</p>
+                <button id="openSettingsBtn" class="btn btn-primary">Open Settings</button>
+            </div>
+        </div>
+
+        <div id="mainContent" class="main-content hidden">
+            <div class="tickets-section">
+                <h2>Your Assigned Tickets</h2>
+                <div id="ticketsList" class="tickets-list"></div>
+            </div>
+
+            <div class="freeform-section">
+                <h2>Additional Tickets</h2>
+                <div id="freeformTickets" class="freeform-tickets">
+                    <div class="freeform-ticket">
+                        <div class="ticket-row">
+                            <input type="text" placeholder="Ticket #" class="ticket-input">
+                            <textarea placeholder="Yesterday" class="yesterday-input"></textarea>
+                            <textarea placeholder="Today" class="today-input"></textarea>
+                            <textarea placeholder="Blockers" class="blockers-input"></textarea>
+                            <input type="date" class="completion-date-input">
+                            <button class="submit-ticket-btn">Submit</button>
+                            <button class="remove-ticket-btn" title="Remove">×</button>
+                        </div>
+                    </div>
+                </div>
+                <button id="addTicketBtn" class="btn btn-secondary">+ Add Ticket</button>
+            </div>
+
+            <div class="actions">
+                <button id="submitAllBtn" class="btn btn-primary">Submit All Updates</button>
+                <button id="viewHistoryBtn" class="btn btn-secondary">View History</button>
+            </div>
+        </div>
+
+        <div id="historyModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Update History</h2>
+                    <button id="closeHistoryBtn" class="close-btn">×</button>
+                </div>
+                <div id="historyContent" class="history-content">
+                    <!-- History will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

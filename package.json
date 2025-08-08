@@ -1,0 +1,36 @@
+{
+  "name": "scrum-standup-chrome-extension",
+  "version": "1.0.0",
+  "description": "Chrome extension to facilitate daily standup meetings for SCRUM teams",
+  "scripts": {
+    "dev": "echo 'Load the extension in Chrome at chrome://extensions/ in developer mode'",
+    "build": "echo 'No build process needed - extension is ready to load'",
+    "lint": "echo 'Add ESLint configuration if needed'",
+    "test": "echo 'Add tests here'"
+  },
+  "keywords": [
+    "chrome-extension",
+    "scrum",
+    "agile",
+    "standup",
+    "jira",
+    "productivity"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/scrum-standup-chrome-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/scrum-standup-chrome-extension/issues"
+  },
+  "homepage": "https://github.com/yourusername/scrum-standup-chrome-extension#readme",
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "@types/chrome": "^0.0.268"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

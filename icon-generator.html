@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icon Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .icon-canvas {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            color: white;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .icon-16 {
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-size: 8px;
+        }
+        .icon-48 {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-size: 24px;
+        }
+        .icon-128 {
+            width: 128px;
+            height: 128px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-size: 48px;
+        }
+        .download-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .download-btn:hover {
+            background: #5a6fd8;
+        }
+        .instructions {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chrome Extension Icon Generator</h1>
+        
+        <div class="instructions">
+            <strong>Instructions:</strong>
+            <ol>
+                <li>Click on each icon below to download it</li>
+                <li>Save them as icon16.png, icon48.png, and icon128.png in your icons/ folder</li>
+                <li>Or create your own icons using the suggested tools in the README</li>
+            </ol>
+        </div>
+
+        <h3>Icon Previews:</h3>
+        
+        <div style="display: flex; align-items: center; margin: 20px 0;">
+            <canvas id="canvas16" class="icon-canvas icon-16"></canvas>
+            <span style="margin-left: 10px;">16x16 - Toolbar Icon</span>
+            <button class="download-btn" onclick="downloadIcon(16)">Download</button>
+        </div>
+
+        <div style="display: flex; align-items: center; margin: 20px 0;">
+            <canvas id="canvas48" class="icon-canvas icon-48">S</canvas>
+            <span style="margin-left: 10px;">48x48 - Extensions Page</span>
+            <button class="download-btn" onclick="downloadIcon(48)">Download</button>
+        </div>
+
+        <div style="display: flex; align-items: center; margin: 20px 0;">
+            <canvas id="canvas128" class="icon-canvas icon-128">📋</canvas>
+            <span style="margin-left: 10px;">128x128 - Chrome Web Store</span>
+            <button class="download-btn" onclick="downloadIcon(128)">Download</button>
+        </div>
+
+        <div style="margin-top: 30px; padding: 15px; background: #f0f0f0; border-radius: 4px;">
+            <strong>Alternative:</strong> You can also use online tools like:
+            <ul>
+                <li><a href="https://favicon.io/favicon-generator/" target="_blank">Favicon.io</a></li>
+                <li><a href="https://www.canva.com/" target="_blank">Canva</a></li>
+                <li><a href="https://iconifier.net/" target="_blank">Iconifier</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function createIcon(size, text = '', emoji = '') {
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+
+            // Add text or emoji
+            ctx.fillStyle = 'white';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            if (emoji) {
+                ctx.font = `${size * 0.6}px Arial`;
+                ctx.fillText(emoji, size / 2, size / 2);
+            } else if (text) {
+                ctx.font = `bold ${size * 0.4}px Arial`;
+                ctx.fillText(text, size / 2, size / 2);
+            }
+
+            return canvas;
+        }
+
+        function downloadIcon(size) {
+            let canvas;
+            switch(size) {
+                case 16:
+                    canvas = createIcon(16);
+                    break;
+                case 48:
+                    canvas = createIcon(48, 'S');
+                    break;
+                case 128:
+                    canvas = createIcon(128, '', '📋');
+                    break;
+            }
+
+            // Download the canvas as PNG
+            const link = document.createElement('a');
+            link.download = `icon${size}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // Initialize preview canvases
+        window.onload = function() {
+            const canvas16 = document.getElementById('canvas16');
+            const canvas48 = document.getElementById('canvas48');
+            const canvas128 = document.getElementById('canvas128');
+
+            // These are just visual previews, actual downloads use the createIcon function
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCRUM Standup - Settings</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>SCRUM Standup Settings</h1>
+        </header>
+
+        <div class="content">
+            <div class="section">
+                <h2>Jira Configuration</h2>
+                <p class="description">
+                    Configure your Jira connection to fetch tickets and post updates. 
+                    You'll need to create an API token in your Jira account settings.
+                </p>
+
+                <form id="settingsForm" class="settings-form">
+                    <div class="form-group">
+                        <label for="jiraDomain">Jira Domain</label>
+                        <input type="text" id="jiraDomain" placeholder="your-company" required>
+                        <small>Enter your Jira domain (without .atlassian.net)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jiraEmail">Email Address</label>
+                        <input type="email" id="jiraEmail" placeholder="your.email@company.com" required>
+                        <small>Your Jira account email address</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jiraApiToken">API Token</label>
+                        <input type="password" id="jiraApiToken" placeholder="Your Jira API token" required>
+                        <small>
+                            <a href="https://id.atlassian.com/manage-profile/security/api-tokens" target="_blank">
+                                Create an API token in your Atlassian account
+                            </a>
+                        </small>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="testConnectionBtn" class="btn btn-secondary">Test Connection</button>
+                        <button type="submit" class="btn btn-primary">Save Settings</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="section">
+                <h2>How to Get Your API Token</h2>
+                <ol class="instructions">
+                    <li>Go to <a href="https://id.atlassian.com/manage-profile/security/api-tokens" target="_blank">Atlassian Account Settings</a></li>
+                    <li>Click "Create API token"</li>
+                    <li>Give your token a descriptive name (e.g., "Chrome Extension")</li>
+                    <li>Copy the generated token and paste it above</li>
+                    <li>Keep your token secure and don't share it with others</li>
+                </ol>
+            </div>
+
+            <div class="section">
+                <h2>Data & Privacy</h2>
+                <div class="privacy-info">
+                    <p>This extension stores your Jira credentials locally in Chrome's secure storage. Your data is never sent to external servers except for direct communication with your Jira instance.</p>
+                    
+                    <div class="data-actions">
+                        <button id="clearHistoryBtn" class="btn btn-secondary">Clear Update History</button>
+                        <button id="clearAllDataBtn" class="btn btn-danger">Clear All Data</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="statusMessage" class="status-message hidden"></div>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>
