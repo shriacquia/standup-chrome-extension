@@ -43,6 +43,8 @@ A Chrome extension designed to facilitate daily standup meetings for SCRUM teams
    - Click "Test Connection" to verify your settings
    - Click "Save Settings"
 
+   <img src="assets/settings.png" alt="Extension Settings" width="300"/>
+
 ## Usage
 
 1. **Daily Standup Updates**:
@@ -54,6 +56,10 @@ A Chrome extension designed to facilitate daily standup meetings for SCRUM teams
      - Any blockers you're facing
      - Planned completion date
    - Submit updates individually or all at once
+
+
+   <img src="assets/update-assigned-tickets.png" alt="Providing updates to assigned tickets" width="300"/>
+
 
 2. **Additional Tickets**:
    - Use the "Additional Tickets" section for tickets not in your assignment
