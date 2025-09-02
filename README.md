@@ -43,6 +43,8 @@ A Chrome extension designed to facilitate daily standup meetings for SCRUM teams
    - Click "Test Connection" to verify your settings
    - Click "Save Settings"
 
+
+
    <img src="assets/settings.png" alt="Extension Settings" width="300"/>
 
 ## Usage
@@ -103,6 +105,7 @@ Completion Date: [Planned completion date]
 ├── options.js             # Settings page functionality
 ├── background.js          # Background service worker
 ├── icons/                 # Extension icons
+├── assets/                # Assets library
 └── README.md              # This file
 ```
 

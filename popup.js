@@ -153,7 +153,7 @@ class StandupExtension {
             const response = await this.makeJiraRequest('/rest/api/3/search/jql', {
                 method: 'POST',
                 body: JSON.stringify({
-                    jql: `assignee = 636cef379cde5926182a2b52 AND status NOT IN ("Ready to release",Released,Closed) AND Sprint in openSprints() AND resolution = Unresolved order by priority DESC,updated DESC`,
+                    jql: `assignee = currentUser() AND status NOT IN ("Ready to release",Released,Closed) AND Sprint in openSprints() AND resolution = Unresolved order by priority DESC,updated DESC`,
                     fields: ['summary', 'status', 'assignee', 'updated', 'duedate'],
                     maxResults: 50
                 })
