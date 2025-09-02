@@ -1,4 +1,4 @@
-# SCRUM Daily Standup Chrome Extension
+# SCRUM Daily Standup Chrome Extension for Jira Cloud
 
 A Chrome extension designed to facilitate daily standup meetings for SCRUM teams. This extension helps team members quickly share their updates by integrating directly with Jira tickets.
 

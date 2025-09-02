@@ -470,3 +470,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     position: relative;
     overflow: visible;
 }
+
+/* .completion-date-input {
+    font-size: 12px;
+} */

@@ -149,17 +149,18 @@ class StandupExtension {
         this.showLoading();
 
         try {
-            const response = await this.makeJiraRequest('/rest/api/3/search', {
+            // Use the new /search/jql endpoint and updated body format
+            const response = await this.makeJiraRequest('/rest/api/3/search/jql', {
                 method: 'POST',
                 body: JSON.stringify({
-                    jql: `assignee = currentUser() AND type IN (standardIssueTypes(),subTaskIssueTypes()) AND resolution = Unresolved order by priority DESC,updated DESC`,
+                    jql: `assignee = 636cef379cde5926182a2b52 AND status NOT IN ("Ready to release",Released,Closed) AND Sprint in openSprints() AND resolution = Unresolved order by priority DESC,updated DESC`,
                     fields: ['summary', 'status', 'assignee', 'updated', 'duedate'],
                     maxResults: 50
                 })
             });
 
             const data = await response.json();
-            
+
             if (!response.ok) {
                 throw new Error(data.errorMessages?.[0] || 'Failed to fetch tickets');
             }
@@ -208,7 +209,8 @@ class StandupExtension {
                 <textarea placeholder="Yesterday" class="yesterday-input" data-field="yesterday"></textarea>
                 <textarea placeholder="Today" class="today-input" data-field="today"></textarea>
                 <textarea placeholder="Blockers" class="blockers-input" data-field="blockers"></textarea>
-                <input type="date" class="completion-date-input" data-field="completionDate" value="${ticket.fields.duedate || ''}">
+                <label for="completionDate-${ticket.key}">Completion Date:</label>
+                <input type="date" style="font-size: 12px;" class="completion-date-input" data-field="completionDate" value="${ticket.fields.duedate || ''}">
                 <button class="submit-ticket-btn" data-ticket-key="${ticket.key}">Submit</button>
             </div>
         `;
